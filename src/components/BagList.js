@@ -6,19 +6,23 @@ function BagList(props) {
   return (
     <React.Fragment>
       <hr />
-      {props.bagList.map((bag, index) =>
-        <Bag name={bag.name}
+      {props.bagList.map((bag) =>
+        <Bag 
+          whenBagClicked={props.onBagSelection}
+          name={bag.name}
           origin={bag.origin}
           price={bag.price}
           roast={bag.roast}
-          key={index} />
+          id={bag.id}
+          key={bag.id} />
       )}
     </React.Fragment>
   );
 }
 
 BagList.propTypes = {
-  bagList: PropTypes.array
+  bagList: PropTypes.array,
+  onBagSelection: PropTypes.func
 };
 
 export default BagList;
