@@ -3,6 +3,7 @@ import NewBagForm from './NewBagForm';
 import BagList from './BagList';
 import BagDetail from './BagDetail';
 import PropTypes from "prop-types";
+import '/node_modules/bootstrap/dist/css/bootstrap.css';
 import { Button } from 'react-bootstrap';
 
 class BagControl extends React.Component {
@@ -58,7 +59,7 @@ class BagControl extends React.Component {
 
   render(){
     let currentlyVisibleState = null;
-    let buttonText = null;
+    let buttonText = "Add New Bag";
 
     if (this.state.selectedBag != null) {
       currentlyVisibleState = <BagDetail bag = {this.state.selectedBag} onBagSale={this.handleSellingBag} onClickingDelete={this.handleDeletingBag}/>;
@@ -66,14 +67,25 @@ class BagControl extends React.Component {
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewBagForm onNewBagCreation={this.handleAddingNewBagToList} />;
       buttonText = "Return to Bag List";
-    } else {
-      currentlyVisibleState = <BagList bagList={this.state.mainBagList} onBagSelection={this.handleChangingSelectedBag} />;
-      buttonText = "Add Bag";
-    }
+    } 
+    // else {
+    //   currentlyVisibleState = <BagList bagList={this.state.mainBagList} onBagSelection={this.handleChangingSelectedBag} />;
+    //   buttonText = "Add Bag";
+    // }
     return (
       <React.Fragment>
-        {currentlyVisibleState}
-        <Button className='btn-secondary' onClick={this.handleClick}>{buttonText}</Button>
+        <div class="container-text-center">
+          <div class="row">
+            <div class="col">
+              <BagList bagList={this.state.mainBagList} onBagSelection={this.handleChangingSelectedBag} />
+              <Button className='btn-secondary' onClick={this.handleClick}>Add Bag</Button>
+            </div>
+            <div class="col">
+              {currentlyVisibleState}
+              <Button className='btn-secondary' onClick={this.handleClick}>{buttonText}</Button>
+            </div>
+          </div>
+        </div>
       </React.Fragment>
     );
   }
