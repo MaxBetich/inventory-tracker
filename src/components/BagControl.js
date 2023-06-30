@@ -17,14 +17,22 @@ class BagControl extends React.Component {
 
   handleAddingNewBagToList = (newBag) => {
     const newMainBagList = this.state.mainBagList.concat(newBag);
-    this.setState({mainBagList: newMainBagList,
-                   formVisibleOnPage: false });
+    this.setState({
+      mainBagList: newMainBagList,
+      formVisibleOnPage: false });
   }
 
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }));
+    if (this.state.selectedBag != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedBag: null
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage,
+      }));
+    }
   }
 
   handleChangingSelectedBag = (id) => {
@@ -32,12 +40,17 @@ class BagControl extends React.Component {
     this.setState({selectedBag: selectedBag});
   }
 
+  handleSellingBag = () => {
+    this.setState({
+        selectedBag: null})
+  }
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
 
     if (this.state.selectedBag != null) {
-      currentlyVisibleState = <BagDetail bag = {this.state.selectedBag} />
+      currentlyVisibleState = <BagDetail bag = {this.state.selectedBag} onBagSale={this.handleSellingBag}/>
       buttonText= "Return to Bag List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewBagForm onNewBagCreation={this.handleAddingNewBagToList} />;
