@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Button } from "react-bootstrap";
 
 function BagDetail(props){
   const {bag} = props;
@@ -17,7 +18,7 @@ function BagDetail(props){
       <h3>Origin: {bag.origin}</h3>
       <h3>Price: {bag.price}</h3>
       <h3>In stock: {bag.count}</h3>
-      <button onClick={handleUpdateCount}>Purchase</button>
+      <Button className="btn-secondary" onClick={handleUpdateCount}>Purchase</Button>
       <hr/>
     </React.Fragment>
   );} else {

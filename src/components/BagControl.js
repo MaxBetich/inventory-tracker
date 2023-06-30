@@ -3,6 +3,7 @@ import NewBagForm from './NewBagForm';
 import BagList from './BagList';
 import BagDetail from './BagDetail';
 import PropTypes from "prop-types";
+import { Button } from 'react-bootstrap';
 
 class BagControl extends React.Component {
 
@@ -62,7 +63,7 @@ class BagControl extends React.Component {
     return (
       <React.Fragment>
         {currentlyVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
+        <Button className='btn-secondary' onClick={this.handleClick}>{buttonText}</Button>
       </React.Fragment>
     );
   }

@@ -1,16 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Card from 'react-bootstrap/Card';
 
 function Bag(props){
   return (
     <React.Fragment>
-      <div onClick={() => props.whenBagClicked(props.id)}>
-        <h3>Name: {props.name} - Roast: {props.roast}</h3>
-        <p>Origin: {props.origin}</p>
-        <p>Price: {props.price}</p>
-        <p>Stock: {props.count}</p>
-        <hr/>
-      </div>
+      <Card>
+        <Card.Body>
+          <div onClick={() => props.whenBagClicked(props.id)}>
+            <Card.Title>Name: {props.name} - Roast: {props.roast}</Card.Title>
+              <ul>
+              <li>Origin: {props.origin}</li>
+              <li>Price: {props.price}</li>
+              <li>Stock: {props.count}</li>
+              </ul>
+          </div>
+        </Card.Body>
+      </Card>
     </React.Fragment>
   );
 }
