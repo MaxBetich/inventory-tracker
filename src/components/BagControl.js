@@ -1,6 +1,6 @@
 import React from 'react';
 import NewBagForm from './NewBagForm';
-
+import BagList from './BagList';
 import PropTypes from "prop-types";
 
 class BagControl extends React.Component {
@@ -13,6 +13,12 @@ class BagControl extends React.Component {
     };
   }
 
+  handleAddingNewBagToList = (newBag) => {
+    const newMainBagList = this.state.mainBagList.concat(newBag);
+    this.setState({mainBagList: newMainBagList,
+                   formVisibleOnPage: false });
+  }
+
   handleClick = () => {
     this.setState(prevState => ({
       formVisibleOnPage: !prevState.formVisibleOnPage
@@ -23,7 +29,7 @@ class BagControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewBagForm />;
+      currentlyVisibleState = <NewBagForm onNewBagCreation={this.handleAddingNewBagToList} />;
       buttonText = "Return to Bag List";
     } else {
       currentlyVisibleState = <BagList bagList={this.state.mainBagList} />;
@@ -39,8 +45,8 @@ class BagControl extends React.Component {
 }
 
 BagControl.propTypes = {
-  formVisibleOnPage: PropTypes.bool.isRequired,
-  mainBagList: PropTypes.array.isRequired
+  formVisibleOnPage: PropTypes.bool,
+  mainBagList: PropTypes.array
 }
 
 export default BagControl;
