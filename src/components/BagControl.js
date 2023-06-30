@@ -41,9 +41,19 @@ class BagControl extends React.Component {
     this.setState({selectedBag: selectedBag});
   }
 
-  handleSellingBag = () => {
+  handleSellingBag = (id) => {
+    const selectedBag = this.state.mainBagList.filter(bag => bag.id === id)[0];
+    const count= selectedBag.count;
+    selectedBag.count = count -1;
     this.setState({
         selectedBag: null})
+  }
+
+  handleDeletingBag = (id) => {
+    const newMainBagList = this.state.mainBagList.filter(bag => bag.id !== id);
+    this.setState({
+      mainBagList: newMainBagList,
+    });
   }
 
   render(){
@@ -51,7 +61,7 @@ class BagControl extends React.Component {
     let buttonText = null;
 
     if (this.state.selectedBag != null) {
-      currentlyVisibleState = <BagDetail bag = {this.state.selectedBag} onBagSale={this.handleSellingBag}/>
+      currentlyVisibleState = <BagDetail bag = {this.state.selectedBag} onBagSale={this.handleSellingBag} onClickingDelete={this.handleDeletingBag}/>;
       buttonText= "Return to Bag List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewBagForm onNewBagCreation={this.handleAddingNewBagToList} />;
