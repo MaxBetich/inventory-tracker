@@ -47,7 +47,7 @@ class BagControl extends React.Component {
     const count= selectedBag.count;
     selectedBag.count = count -1;
     this.setState({
-        selectedBag: null})
+        selectedBag: selectedBag})
   }
 
   handleDeletingBag = (id) => {
@@ -63,24 +63,20 @@ class BagControl extends React.Component {
 
     if (this.state.selectedBag != null) {
       currentlyVisibleState = <BagDetail bag = {this.state.selectedBag} onBagSale={this.handleSellingBag} onClickingDelete={this.handleDeletingBag}/>;
-      buttonText= "Return to Bag List";
+      buttonText= "Close";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewBagForm onNewBagCreation={this.handleAddingNewBagToList} />;
-      buttonText = "Return to Bag List";
-    } 
-    // else {
-    //   currentlyVisibleState = <BagList bagList={this.state.mainBagList} onBagSelection={this.handleChangingSelectedBag} />;
-    //   buttonText = "Add Bag";
-    // }
+      buttonText = "Close";
+    }
     return (
       <React.Fragment>
-        <div class="container-text-center">
-          <div class="row">
-            <div class="col">
+        <div className="container-text-center">
+          <div className="row">
+            <div className="col">
               <BagList bagList={this.state.mainBagList} onBagSelection={this.handleChangingSelectedBag} />
               <Button className='btn-secondary' onClick={this.handleClick}>Add Bag</Button>
             </div>
-            <div class="col">
+            <div className="col">
               {currentlyVisibleState}
               <Button className='btn-secondary' onClick={this.handleClick}>{buttonText}</Button>
             </div>
