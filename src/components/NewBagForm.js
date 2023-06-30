@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {v4} from 'uuid';
+import { Card } from "react-bootstrap";
+import {Button} from "react-bootstrap";
 
 function NewBagForm(props){
   function handleNewBagFormSubmission(event) {
@@ -16,25 +18,29 @@ function NewBagForm(props){
   }
   return (
     <React.Fragment>
-      <form onSubmit={handleNewBagFormSubmission}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name" />
-        <input
-          type="text"
-          name="origin"
-          placeholder="Origin" />
-        <input
-          type="text"
-          name="price"
-          placeholder="Price" />
-        <input
-          type="text"
-          name="roast"
-          placeholder="Roast" />
-        <button type="submit">Add</button>
-      </form>
+      <Card>
+        <Card.Body>
+          <form onSubmit={handleNewBagFormSubmission}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name" />
+            <input
+              type="text"
+              name="origin"
+              placeholder="Origin" />
+            <input
+              type="text"
+              name="price"
+              placeholder="Price" />
+            <input
+              type="text"
+              name="roast"
+              placeholder="Roast" />
+            <Button className="btn-secondary" type="submit">Add</Button>
+          </form>
+        </Card.Body>
+      </Card>
     </React.Fragment>
   );
 }
