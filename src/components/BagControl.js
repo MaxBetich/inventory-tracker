@@ -70,6 +70,7 @@ class BagControl extends React.Component {
     }
     return (
       <React.Fragment>
+        <hr/>
         <div className="container-text-center">
           <div className="row">
             <div className="col">

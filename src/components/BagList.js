@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 function BagList(props) {
   return (
     <React.Fragment>
-      <hr />
       {props.bagList.map((bag) =>
         <Bag 
           whenBagClicked={props.onBagSelection}
