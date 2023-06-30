@@ -13,6 +13,7 @@ function BagList(props) {
           origin={bag.origin}
           price={bag.price}
           roast={bag.roast}
+          count={bag.count}
           id={bag.id}
           key={bag.id} />
       )}

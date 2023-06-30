@@ -5,9 +5,10 @@ function Bag(props){
   return (
     <React.Fragment>
       <div onClick={() => props.whenBagClicked(props.id)}>
-        <h3>{props.name} - {props.roast}</h3>
-        <p>{props.origin}</p>
-        <p>{props.price}</p>
+        <h3>Name: {props.name} - Roast: {props.roast}</h3>
+        <p>Origin: {props.origin}</p>
+        <p>Price: {props.price}</p>
+        <p>Stock: {props.count}</p>
         <hr/>
       </div>
     </React.Fragment>
