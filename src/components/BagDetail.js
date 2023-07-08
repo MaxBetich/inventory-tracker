@@ -16,6 +16,7 @@ function BagDetail(props){
           <h3>Price: {bag.price}</h3>
           <h3>In stock: {bag.count}</h3>
           <Button className="btn-secondary" onClick={()=>onBagSale(bag.id)}>Sell</Button>
+          <Button className="btn-secondary" onClick={props.onClickingEdit}>Update Item</Button>
           <Button className="btn-danger" onClick={()=> onClickingDelete(bag.id)}>Remove from Inventory</Button>
         </Card.Body>
       </Card>
@@ -41,7 +42,8 @@ function BagDetail(props){
 BagDetail.propTypes = {
   bag: PropTypes.object,
   onBagSale: PropTypes.func,
-  onClickingDelete: PropTypes.func
+  onClickingDelete: PropTypes.func,
+  onClickingEdit: PropTypes.func
 };
 
 export default BagDetail;
